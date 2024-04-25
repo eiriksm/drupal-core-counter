@@ -1,0 +1,21 @@
+name: Build data
+on:
+  # manually
+  workflow_dispatch:
+  # also on webhooks
+  repository_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: '30 21 * * *'
+
+jobs:
+  build:
+    name: Build data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git clone https://git.drupalcode.org/project/drupal.git
