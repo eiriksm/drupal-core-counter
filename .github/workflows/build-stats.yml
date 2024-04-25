@@ -19,3 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git clone https://git.drupalcode.org/project/drupal.git
+      - run: |
+          cd drupal
+          git log -s --format=%s
